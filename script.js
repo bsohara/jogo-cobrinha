@@ -37,6 +37,7 @@ function update()
 
 function startGame()
 {
+    if(snake[0].x > 15 * box &&direction == "right") snake[0].x = 0
     createBG()
     createSnake()
 
