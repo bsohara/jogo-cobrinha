@@ -48,6 +48,15 @@ function update(event)
 
 function startGame()
 {
+
+    for (i = 1; i < snake.length; i++)
+    {
+        if (snake[0].x === snake[1].x && snake[0].y === snake[1].y) {
+            clearInterval(game)
+            alert('Fim de jogo!')
+        }
+    }
+
     if(snake[0].x > 15 * box && directions == "right") snake[0].x = 0
     if(snake[0].x < 0 && directions == "left") snake[0].x = 16 * box
     if(snake[0].y < 0 && directions == "down") snake[0].y = 16 * box
@@ -65,6 +74,16 @@ function startGame()
     if(directions == "up") snakeY += box
     if(directions == "down") snakeY -= box
 
+    if(snakeX != food.x || snakeY != food.y)
+    {
+        snake.pop()
+    }
+    else
+    {
+        food.x = Math.floor(Math.random() * 15 + 1) * box
+        food.y = Math.floor(Math.random() * 15 + 1) * box
+    }   
+    
     snake.pop()
 
     let newHead = {
@@ -77,4 +96,7 @@ function startGame()
 
 let game = setInterval(startGame, 100)
 
-
+function reloadPage()
+{
+    window.location.reload()
+}
