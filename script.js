@@ -51,7 +51,7 @@ function startGame()
 
     for (i = 1; i < snake.length; i++)
     {
-        if (snake[0].x === snake[1].x && snake[0].y === snake[1].y) {
+        if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
             clearInterval(game)
             alert('Fim de jogo!')
         }
@@ -83,8 +83,6 @@ function startGame()
         food.x = Math.floor(Math.random() * 15 + 1) * box
         food.y = Math.floor(Math.random() * 15 + 1) * box
     }   
-    
-    snake.pop()
 
     let newHead = {
         x: snakeX,
